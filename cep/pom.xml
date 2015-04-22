@@ -1,27 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>br.com</groupId>
-    <artifactId>cep</artifactId>
-    <version>1.0.0</version>
-    <packaging>pom</packaging>
-    <properties>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com</groupId>
+	<artifactId>cep</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.current.version>1.8</java.current.version>
 	</properties>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <type>jar</type>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
-    <build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<type>jar</type>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-cdi</artifactId>
+			<version>5.1.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.hk2.external</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>2.4.0-b10</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-mvc-jsp</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-bean-validation</artifactId>
+			<version>2.17</version>
+		</dependency>
+	</dependencies>
+	<build>
 		<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
 		<scriptSourceDirectory>${project.basedir}/src/main/scripts</scriptSourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
@@ -61,16 +110,16 @@
 			</plugin>
 		</plugins>
 	</build>
-    <modules>
-        <module>cepcommons</module>
-        <module>cepbusiness</module>
-        <module>cepjpa</module>
-        <module>cepweb</module>
-        <module>cepear</module>
-    </modules>
-    <prerequisites>
-        <maven>3.2.1</maven>
-    </prerequisites>
-    <name>cep</name>
-    <url>http://</url>
+	<modules>
+		<module>cepcommons</module>
+		<module>cepbusiness</module>
+		<module>cepjpa</module>
+		<module>cepweb</module>
+		<module>cepear</module>
+	</modules>
+	<prerequisites>
+		<maven>3.2.1</maven>
+	</prerequisites>
+	<name>cep</name>
+	<url>http://</url>
 </project>
