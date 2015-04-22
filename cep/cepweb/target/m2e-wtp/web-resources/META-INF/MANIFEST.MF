@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: cepweb
+Implementation-Version: 1.0.0
+Implementation-Vendor-Id: br.com.cep
+Build-Jdk: 1.7.0_67
+Built-By: T51400408
+Created-By: Maven Integration for Eclipse
+Specification-Title: cepweb
+Specification-Version: 1.0.0
+
