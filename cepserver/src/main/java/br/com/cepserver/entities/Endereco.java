@@ -2,6 +2,9 @@ package br.com.cepserver.entities;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 8505383885163674679L;
 	private String rua;

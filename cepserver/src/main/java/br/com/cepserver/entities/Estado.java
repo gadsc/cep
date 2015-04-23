@@ -2,6 +2,9 @@ package br.com.cepserver.entities;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Estado implements Serializable {
 	private static final long serialVersionUID = 335998555484531593L;
 	private String nome;
