@@ -17,6 +17,7 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 4782264278328343377L;
 	@Id
 	@GeneratedValue
+	@NotNull
 	private Long id;
 
 	@Column(nullable = false, length = 100)

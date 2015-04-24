@@ -21,10 +21,12 @@ public class RestClient {
 		client = new ResteasyClientBuilder().build();
 	}
 
-	public JsonObject getJsonFromService(UriBuilder uri) {
+	public Response getResponseFromService(UriBuilder uri) {
 		ResteasyWebTarget target = client.target(uri);
-		Response response = target.request().get();
+		return target.request().get();
+	}
 
+	public JsonObject getJsonFromResponse(Response response) {
 		return new Gson().fromJson(response.readEntity(String.class),
 				JsonElement.class).getAsJsonObject();
 	}

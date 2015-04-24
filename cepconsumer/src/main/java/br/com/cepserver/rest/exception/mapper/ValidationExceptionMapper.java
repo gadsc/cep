@@ -1,4 +1,4 @@
-package br.com.cepserver.rest.exception;
+package br.com.cepserver.rest.exception.mapper;
 
 import javax.validation.ValidationException;
 import javax.ws.rs.core.Response;

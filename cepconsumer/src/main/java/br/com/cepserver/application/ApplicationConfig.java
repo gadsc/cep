@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import br.com.cepserver.rest.exception.ValidationExceptionMapper;
+import br.com.cepserver.rest.exception.mapper.ValidationExceptionMapper;
 import br.com.cepserver.rest.service.EnderecoCrudService;
 
 @ApplicationPath("/")

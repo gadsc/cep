@@ -15,13 +15,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import br.com.cepconsumer.dao.DAO;
 import br.com.cepconsumer.entities.Endereco;
+import br.com.cepconsumer.rest.client.CepClient;
+import br.com.cepserver.rest.exception.CepServiceException;
 
 @Path("/endereco")
 public class EnderecoCrudService implements Serializable {
 	private static final long serialVersionUID = -2434608870284261408L;
+
+	@Inject
+	private CepClient cepClient;
 
 	@Inject
 	private DAO<Endereco> daoEndereco;
@@ -30,8 +36,19 @@ public class EnderecoCrudService implements Serializable {
 	@Path("incluir")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response incluirEndereco(@Valid Endereco endereco) {
-		return Response.ok(daoEndereco.adicionar(endereco)).build();
+	public Response incluirEndereco(String cep) {
+		Endereco endereco = null;
+		Response response = null;
+
+		try {
+			endereco = cepClient.buscarEnderecoPorCep(cep);
+			response = Response.ok(daoEndereco.adicionar(endereco)).build();
+		} catch (CepServiceException exception) {
+			response = Response.status(Status.BAD_REQUEST)
+					.entity(exception.getMessage()).build();
+		}
+
+		return response;
 	}
 
 	@PUT
