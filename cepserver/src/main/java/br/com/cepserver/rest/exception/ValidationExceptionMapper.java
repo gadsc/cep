@@ -14,7 +14,6 @@ public class ValidationExceptionMapper implements
 		ExceptionMapper<ValidationException> {
 	@Override
 	public Response toResponse(ValidationException exception) {
-
 		if (exception instanceof ResteasyViolationException) {
 			ResteasyViolationException restEasyException = (ResteasyViolationException) exception;
 			ResteasyConstraintViolation violation = (ResteasyConstraintViolation) restEasyException
@@ -24,7 +23,7 @@ public class ValidationExceptionMapper implements
 					.entity(violation.getMessage()).build();
 		}
 
-		return Response.status(Status.BAD_REQUEST).entity(exception.toString())
+		return Response.status(Status.BAD_REQUEST).entity(exception.getMessage())
 				.build();
 	}
 }

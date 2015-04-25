@@ -15,40 +15,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
-import br.com.cepconsumer.dao.DAO;
 import br.com.cepconsumer.entities.Endereco;
-import br.com.cepconsumer.rest.client.CepClient;
-import br.com.cepserver.rest.exception.CepServiceException;
+import br.com.cepserver.service.EnderecoService;
 
 @Path("/endereco")
 public class EnderecoCrudService implements Serializable {
 	private static final long serialVersionUID = -2434608870284261408L;
 
 	@Inject
-	private CepClient cepClient;
-
-	@Inject
-	private DAO<Endereco> daoEndereco;
+	private EnderecoService enderecoService;
 
 	@POST
-	@Path("incluir")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("incluir/{cep}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response incluirEndereco(String cep) {
-		Endereco endereco = null;
-		Response response = null;
-
-		try {
-			endereco = cepClient.buscarEnderecoPorCep(cep);
-			response = Response.ok(daoEndereco.adicionar(endereco)).build();
-		} catch (CepServiceException exception) {
-			response = Response.status(Status.BAD_REQUEST)
-					.entity(exception.getMessage()).build();
-		}
-
-		return response;
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response incluirEndereco(@PathParam("cep") String cep) {
+		return enderecoService.incluirEndereco(cep);
 	}
 
 	@PUT
@@ -56,7 +39,7 @@ public class EnderecoCrudService implements Serializable {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response alterarEndereco(@Valid Endereco endereco) {
-		return Response.ok(daoEndereco.atualizar(endereco)).build();
+		return enderecoService.alterarEndereco(endereco);
 	}
 
 	@GET
@@ -64,7 +47,7 @@ public class EnderecoCrudService implements Serializable {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response buscarEndereco(@PathParam("id") @Min(1) int id) {
-		return Response.ok(daoEndereco.pesquisarPorId(id)).build();
+		return enderecoService.buscarEndereco(id);
 	}
 
 	@DELETE
@@ -72,7 +55,6 @@ public class EnderecoCrudService implements Serializable {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response excluirEndereco(@PathParam("id") @Min(1) int id) {
-		daoEndereco.apagarPorId(id);
-		return Response.ok().build();
+		return enderecoService.excluirEndereco(id);
 	}
 }

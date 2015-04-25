@@ -11,14 +11,14 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "endereco", schema = "cep")
+@Table(name = "endereco")
 @XmlRootElement
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 4782264278328343377L;
 	@Id
 	@GeneratedValue
 	@NotNull
-	private Long id;
+	private int id;
 
 	@Column(nullable = false, length = 100)
 	@NotNull
@@ -28,7 +28,7 @@ public class Endereco implements Serializable {
 	@NotNull
 	private int numero;
 
-	@Column(nullable = false, length = 8)
+	@Column(nullable = false, length = 9)
 	@NotNull
 	private String cep;
 
@@ -40,17 +40,34 @@ public class Endereco implements Serializable {
 	@NotNull
 	private String estado;
 
-	@Column(nullable = false, length = 100)
+	@Column(length = 100)
 	private String bairro;
 
-	@Column(nullable = false, length = 150)
+	@Column(length = 150)
 	private String complemento;
+	
+	public Endereco() {
+		
+	}
 
-	public Long getId() {
+	public Endereco(int id, String rua, int numero, String cep, String cidade,
+			String estado, String bairro, String complemento) {
+		super();
+		this.id = id;
+		this.rua = rua;
+		this.numero = numero;
+		this.cep = cep;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.bairro = bairro;
+		this.complemento = complemento;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
