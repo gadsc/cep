@@ -9,6 +9,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.ws.rs.NotFoundException;
 
+/**
+ * Classe generica para tratar acesso à dados
+ * 
+ * @author Gabz
+ *
+ * @param <T>
+ */
 public abstract class GenericDAO<T> {
 
 	static EntityManagerFactory factory = null;

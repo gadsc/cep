@@ -10,6 +10,12 @@ import javax.ws.rs.core.Application;
 import br.com.cepserver.rest.exception.mapper.ValidationExceptionMapper;
 import br.com.cepserver.rest.service.EnderecoCrudService;
 
+/**
+ * Classe que controla a sua aplicação rest e seus recursos
+ * 
+ * @author Gabz
+ *
+ */
 @ApplicationPath("/")
 public class ApplicationConfig extends Application {
 	private final Set<Class<?>> classes;

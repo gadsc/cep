@@ -10,6 +10,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Entidade Endereço
+ * 
+ * @author Gabz
+ *
+ */
 @Entity
 @Table(name = "endereco")
 @XmlRootElement
@@ -45,9 +51,9 @@ public class Endereco implements Serializable {
 
 	@Column(length = 150)
 	private String complemento;
-	
+
 	public Endereco() {
-		
+
 	}
 
 	public Endereco(int id, String rua, int numero, String cep, String cidade,

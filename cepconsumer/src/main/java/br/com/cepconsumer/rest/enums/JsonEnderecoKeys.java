@@ -1,5 +1,12 @@
 package br.com.cepconsumer.rest.enums;
 
+/**
+ * Enum contendo as keys do Json de Endereço devolvido pelo serviço de busca de
+ * cep
+ * 
+ * @author Gabz
+ *
+ */
 public enum JsonEnderecoKeys {
 
 	RUA("rua"), BAIRRO("bairro"), CEP("cep"), CIDADE("cidade"), NOME("nome"), COMPLEMENTO(

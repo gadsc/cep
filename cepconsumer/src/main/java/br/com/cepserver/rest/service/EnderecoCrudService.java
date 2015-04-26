@@ -19,6 +19,13 @@ import javax.ws.rs.core.Response;
 import br.com.cepconsumer.entities.Endereco;
 import br.com.cepserver.service.EnderecoService;
 
+/**
+ * Serviço de CRUD de endereço com validação no serviço de busca de CEP com
+ * JAX-RS
+ * 
+ * @author Gabz
+ *
+ */
 @Path("/endereco")
 public class EnderecoCrudService implements Serializable {
 	private static final long serialVersionUID = -2434608870284261408L;

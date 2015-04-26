@@ -1,16 +1,13 @@
 package br.com.cepconsumer.dao.producer;
 
-import java.lang.reflect.ParameterizedType;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-
-import br.com.cepconsumer.dao.DAO;
-import br.com.cepconsumer.dao.impl.DAOImpl;
-
+/**
+ * Producer para gerar os DAO's
+ * 
+ * @author Gabz
+ *
+ * @param <T>
+ */
 public class DAOProducer<T> {
 //	@PersistenceContext(unitName = "cepconsumerPU", type = PersistenceContextType.TRANSACTION)
 //	private transient EntityManager em;

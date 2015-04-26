@@ -12,6 +12,12 @@ import br.com.cepserver.rest.exception.CepServiceException;
 
 import com.google.gson.JsonObject;
 
+/**
+ * Classe que é o client do serviço de buscar cep
+ * 
+ * @author Gabz
+ *
+ */
 public class CepClient {
 	@Inject
 	private RestClient restClient;

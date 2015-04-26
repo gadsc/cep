@@ -12,6 +12,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+/**
+ * Classe genérica para consumo de serviços rest
+ * 
+ * @author Gabz
+ *
+ */
 public class RestClient {
 
 	private ResteasyClient client;

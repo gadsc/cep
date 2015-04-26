@@ -1,7 +1,15 @@
 package br.com.cepconsumer.dao.impl;
 
+import br.com.cepconsumer.dao.DAO;
 
-public class DAOImpl<T> {
+
+/**
+ * Implementação concreta da interface dao
+ * @author Gabz
+ *
+ * @param <T>
+ */
+public class DAOImpl<T> implements DAO<T> {
 
 //	@NotNull
 //	private final Class<T> clazz;

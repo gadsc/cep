@@ -9,6 +9,13 @@ import javax.ws.rs.ext.Provider;
 import org.jboss.resteasy.api.validation.ResteasyConstraintViolation;
 import org.jboss.resteasy.api.validation.ResteasyViolationException;
 
+/**
+ * Mapper para recuperar as mensagens do bean validation no JAX-RS e exibi-las
+ * para o usuario como resposta do serviço
+ * 
+ * @author Gabz
+ *
+ */
 @Provider
 public class ValidationExceptionMapper implements
 		ExceptionMapper<ValidationException> {
