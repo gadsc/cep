@@ -18,8 +18,12 @@ public class CepBean implements Serializable {
 
 	@PostConstruct
 	public void initialize() {
-		mapaEnderecos = new HashMap<>();
 		contador = 0;
+		this.populaCepBean();
+	}
+	
+	public void populaCepBean() {
+		mapaEnderecos = new HashMap<>();
 		mapaEnderecos.put("00000000", new Endereco("Araguaia", 105,
 				"00000-000", new Cidade("São Paulo", new Estado("São Paulo",
 						"SP"))));
@@ -54,7 +58,7 @@ public class CepBean implements Serializable {
 	public Endereco buscarEnderecoPorCep(String cep) {
 		Endereco endereco = this.mapaEnderecos.get(cep);
 
-		if (endereco == null) {
+		if (endereco == null && contador < cep.length()) {
 			endereco = this.buscarEnderecoPorCep(this.getCepAlterado(cep,
 					contador++));
 		}
@@ -62,26 +66,12 @@ public class CepBean implements Serializable {
 		return endereco;
 	}
 
-	private String getCepAlterado(String cep, int contador) {
+	public String getCepAlterado(String cep, int contador) {
 		return cep.replace(cep, cep.substring(0, cep.length() - contador)
 				+ this.concatDigitoAlterado(contador));
 	}
 
-	// private String concatDigitoAlterado(int contador) {
-	// StringBuilder sb = new StringBuilder(contador);
-	//
-	// for (int i = 0; i < contador; i++) {
-	// if(i == 4) {
-	// sb.insert(contador-i, "-");
-	// } else {
-	// sb.append(DIGITO_SUBSTITUTO);
-	// }
-	// }
-	//
-	// return sb.toString();
-	// }
-
-	private String concatDigitoAlterado(int contador) {
+	public String concatDigitoAlterado(int contador) {
 		StringBuilder sb = new StringBuilder(contador);
 
 		for (int i = 0; i < contador; i++) {

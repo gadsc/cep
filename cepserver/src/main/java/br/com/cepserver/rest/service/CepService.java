@@ -13,7 +13,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
+import br.com.cepserver.entities.Endereco;
 import br.com.cepserver.service.bean.CepBean;
 
 @Path("/buscarcep")
@@ -22,17 +24,27 @@ public class CepService implements Serializable {
 
 	@Inject
 	private CepBean cepBean;
+	
+	private final String MENSAGEM_ERRO_VALIDACAO_CEP = "CEP inválido!";
 
 	@Path("{cep}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response buscarEnderecoPorCep(
-			@Size(min = 9, max = 9, message = "CEP inválido!")
-			@NotNull(message = "CEP inválido!")
-			@Pattern(regexp = "[0-9]{5}-[0-9]{3}", message = "CEP inválido!")
+			@Size(min = 9, max = 9, message = MENSAGEM_ERRO_VALIDACAO_CEP)
+			@NotNull(message = MENSAGEM_ERRO_VALIDACAO_CEP)
+			@Pattern(regexp = "[0-9]{5}-[0-9]{3}", message = MENSAGEM_ERRO_VALIDACAO_CEP)
 			@PathParam("cep") String cep) {
-		return Response.ok(
-				cepBean.buscarEnderecoPorCep(cep.replaceAll("-", ""))).build();
+		Endereco endereco = cepBean.buscarEnderecoPorCep(cep.replace("-", ""));
+		Response response = null;
+
+		if (endereco == null) {
+			response = Response.status(Status.NOT_FOUND)
+					.entity(MENSAGEM_ERRO_VALIDACAO_CEP).build();
+		} else {
+			response = Response.ok(endereco).build();
+		}
+		return response;
 	}
 }
