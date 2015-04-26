@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Modelo para retorno do Serviço
+ * 
+ * @author Gabz
+ *
+ */
 @XmlRootElement
 public class Cidade implements Serializable {
 	private static final long serialVersionUID = 2044752645194672299L;

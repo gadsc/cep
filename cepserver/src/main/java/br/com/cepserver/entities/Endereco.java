@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Modelo para retorno do serviço
+ * 
+ * @author Gabz
+ *
+ */
 @XmlRootElement
 public class Endereco implements Serializable {
 	private static final long serialVersionUID = 8505383885163674679L;

@@ -10,6 +10,13 @@ import br.com.cepserver.entities.Cidade;
 import br.com.cepserver.entities.Endereco;
 import br.com.cepserver.entities.Estado;
 
+/**
+ * Classe com as implementações solicitadas para tratamento do parâmetro do cep
+ * e também com a implementação dos mocks para retorno
+ * 
+ * @author Gabz
+ *
+ */
 public class CepBean implements Serializable {
 	private static final long serialVersionUID = -8484991442515876959L;
 	private Map<String, Endereco> mapaEnderecos;
@@ -21,7 +28,7 @@ public class CepBean implements Serializable {
 		contador = 0;
 		this.populaCepBean();
 	}
-	
+
 	public void populaCepBean() {
 		mapaEnderecos = new HashMap<>();
 		mapaEnderecos.put("00000000", new Endereco("Araguaia", 105,
@@ -55,6 +62,15 @@ public class CepBean implements Serializable {
 						"SP")), "Redação", "Pra passar no enem"));
 	}
 
+	/**
+	 * Busca o endereço no Map usando o cep como key, se não encontrar chama-se
+	 * recursivamente alterando os valores da direita para esquerda pelo
+	 * DIGITO_SUBSTITUO (0)
+	 * 
+	 * @param cep
+	 *            utilizado como key
+	 * @return endereco
+	 */
 	public Endereco buscarEnderecoPorCep(String cep) {
 		Endereco endereco = this.mapaEnderecos.get(cep);
 
@@ -66,11 +82,25 @@ public class CepBean implements Serializable {
 		return endereco;
 	}
 
+	/**
+	 * Altera o cep informado, substituindo da direita para esquerda os digitos
+	 * por "0"
+	 * 
+	 * @param cep
+	 * @param contador
+	 * @return cep alterado
+	 */
 	public String getCepAlterado(String cep, int contador) {
 		return cep.replace(cep, cep.substring(0, cep.length() - contador)
 				+ this.concatDigitoAlterado(contador));
 	}
 
+	/**
+	 * Concatena o DIGITO_SUBSTITUO a quantidade de vezes informada
+	 * 
+	 * @param contador
+	 * @return quantidade de digitos alterados
+	 */
 	public String concatDigitoAlterado(int contador) {
 		StringBuilder sb = new StringBuilder(contador);
 
